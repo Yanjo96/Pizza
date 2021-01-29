@@ -1151,11 +1151,11 @@ for (var func in conversions) {
   // export rgb2hsl and ["rgb"]["hsl"]
   convert[from] = convert[from] || {};
 
-  convert[from][to] = convert[func] = (function(func) { 
+  convert[from][to] = convert[func] = (function(func) {
     return function(arg) {
       if (typeof arg == "number")
         arg = Array.prototype.slice.call(arguments);
-      
+
       var val = conversions[func](arg);
       if (typeof val == "string" || val === undefined)
         return val; // keyword
@@ -1183,12 +1183,12 @@ Converter.prototype.routeSpace = function(space, args) {
    }
    // color.rgb(10, 10, 10)
    if (typeof values == "number") {
-      values = Array.prototype.slice.call(args);        
+      values = Array.prototype.slice.call(args);
    }
 
    return this.setValues(space, values);
 };
-  
+
 /* Set the values for a space, invalidating cache */
 Converter.prototype.setValues = function(space, values) {
    this.space = space;
@@ -1728,31 +1728,33 @@ var colours = require('color');
 //much doge
 var doge = require('doge');
 
-var body = document.querySelector("#main1")
+var body = document.querySelector("#main")
 
 // var words = ["such wow", "Pizza!", "WOW", ":winky:", "<3", "very nice!", "amazing!", "much sexy", "Delicious!"]
 var words_v2 = ["Pizza", "Delicious", "Cheese", "Nom"]
 var fonts = ["Comic Sans MS"]
 
-var create_element = function(){
-  var element = document.createElement("div");
-  // var content = words[getRandom(words.length-1)];
-  var content = doge(words_v2[getRandom(words_v2.length-1)]);
-  var text = document.createTextNode(content);         // Create a text node
-  element.appendChild(text);
+var create_element = function(test){
+  if(document.querySelectorAll('#main .wow').length < 50){
+    var element = document.createElement("div");
+    //var content = words[getRandom(words.length-1)];
+    var content = doge(words_v2[getRandom(words_v2.length-1)]);
+    var text = document.createTextNode(content);         // Create a text node
+    element.appendChild(text);
 
-  // set style and attribute for the element
-  element.style.position ="fixed";
-  element.style.display ="block";
-  element.style.top = getRandom(height)+"px";
-  element.style.left = getRandom(width)+"px";
-  element.style.fontSize = getRandom(80)+"px";
-  element.style.fontFamily = fonts //getRandom(fonts);
-  element.style.color = colours({h:getRandom(100), s: 300, l: 45}).hslString()
-  element.setAttribute("class", "wow");
+    // set style and attribute for the element
+    element.style.position ="fixed";
+    element.style.display ="block";
+    element.style.top = getRandom(height)+"px";
+    element.style.left = getRandom(width)+"px";
+    element.style.fontSize = getRandom(80)+"px";
+    element.style.fontFamily = fonts //getRandom(fonts);
+    element.style.color = colours({h:getRandom(100), s: 300, l: 45}).hslString()
+    element.setAttribute("class", "wow");
 
-  // add element to the page
-  body.appendChild(element)
+    // add element to the page
+    body.appendChild(element)
+  }
 }
 
 var rmv_element = function(){

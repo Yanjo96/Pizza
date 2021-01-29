@@ -9,6 +9,15 @@ function getRandom(max) {
   return rn(options);
 }
 
+function changeTheme(){
+  var selection = document.getElementById("theme");
+  if (selection.checked) {
+    document.body.style.backgroundColor = "151515";
+  } else {
+  document.body.style.backgroundColor = "white";
+  }
+}
+
 // get document heigth cross-browser!
 var documentsize = require('get-document-size');
 var height = documentsize.height;
